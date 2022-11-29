@@ -16,28 +16,31 @@ const App = () => {
   useEffect(() => {
     if (search === '') return;
 
-    (async function () {
+    async function fetchData() {
       try {
         const { hits, totalHits } = await imageLoader(search, page);
         if (!hits.length) notify();
 
         setImages(prevState => [...prevState, ...hits]);
         setTotalHits(totalHits);
-
         setStatus('resolved');
       } catch (error) {
         console.log('error', error);
       }
-    })();
+    }
+    fetchData();
   }, [search, page]);
 
-  const onFormSubmit = async e => {
+  const onFormSubmit = e => {
     e.preventDefault();
     const query = e.target[1].value;
+    e.target[1].value = '';
 
-    setImages([]);
+    if (query === search) return;
+
     setSearch(query);
     setPage(1);
+    setImages([]);
   };
 
   async function imageLoader(query, page) {

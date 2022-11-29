@@ -18,7 +18,6 @@ export const Header = ({ onSubmit }) => {
         </SearchFormBtn>
 
         <Input
-          className="input"
           type="text"
           autoComplete="off"
           autoFocus
