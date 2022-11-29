@@ -7,7 +7,7 @@ import {
 import { FiSearch } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 
-export const Header = ({ onChange, onSubmit }) => {
+export const Header = ({ onSubmit }) => {
   return (
     <Searchbar>
       <SearchForm onSubmit={onSubmit}>
@@ -18,7 +18,6 @@ export const Header = ({ onChange, onSubmit }) => {
         </SearchFormBtn>
 
         <Input
-          onChange={onChange}
           className="input"
           type="text"
           autoComplete="off"
@@ -31,6 +30,5 @@ export const Header = ({ onChange, onSubmit }) => {
 };
 
 Header.propTypes = {
-  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
