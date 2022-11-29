@@ -8,17 +8,18 @@ export const Modal = ({ url, onCloseModal }) => {
     onCloseModal();
   };
 
-  const onEscapeDown = e => {
-    if (e.code !== 'Escape') return;
-    onCloseModal();
-  };
-
   useEffect(() => {
     window.addEventListener('keydown', onEscapeDown);
     return () => {
       window.removeEventListener('keydown', onEscapeDown);
     };
-  });
+    // eslint-disable-next-line
+  }, []);
+
+  const onEscapeDown = e => {
+    if (e.code !== 'Escape') return;
+    onCloseModal();
+  };
 
   return (
     <Overlay onClick={onOverlayClick}>
